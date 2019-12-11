@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaelminatto1/impacta-react.git"
+  },
+  "keywords": [
+    "cursos",
+    "impacta",
+    "react"
+  ],
+  "author": "rafael minatto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafaelminatto1/impacta-react/issues"
+  },
+  "homepage": "https://github.com/rafaelminatto1/impacta-react#readme",
+  "dependencies": {
+    "mongoose": "^5.8.0"
+  }
+}
