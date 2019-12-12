@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/loader.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,7 +13,7 @@
   "keywords": [
     "cursos",
     "impacta",
-    "react"
+    "react"  
   ],
   "author": "rafael minatto",
   "license": "ISC",
@@ -22,6 +22,12 @@
   },
   "homepage": "https://github.com/rafaelminatto1/impacta-react#readme",
   "dependencies": {
-    "mongoose": "^5.8.0"
+    "body-parser": "^1.19.0",
+    "mongoose": "^5.8.0",
+    "node-restful": "^0.2.6"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.1"
   }
 }
