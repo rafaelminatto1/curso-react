@@ -4,17 +4,19 @@ import '../node_modules/jquery/dist/jquery.min';
 import '../node_modules/popper.js/dist/umd/popper.min';
 import '../node_modules/bootstrap/dist/js/bootstrap.min';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import {CursoIndex} from './curso'
-import {ContatoIndex} from './contato'
+import { CursoIndex } from './paginas/curso'
+import { ContatoIndex } from './paginas/contato'
+import { Menu } from './paginas/menu'
+import {Rotas} from './rotas'
 
 
 
 function App() {
 
-  return (  
+  return (
     <div>
-    <CursoIndex/>
-    <ContatoIndex/>
+      <Menu />
+      <Rotas/>
     </div>
   )
 }
