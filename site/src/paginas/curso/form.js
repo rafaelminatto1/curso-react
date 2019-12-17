@@ -61,7 +61,7 @@ export class FromCurso extends Component {
                     </div>
                     <div className="form-group row">
                         <button
-                            className="btn btn-primary ml-3 mb-3">
+                            className="btn btn-primary ml-3 mb-3"onClick={this.props.adicionar}>
                             Adicionar
  </button>
                     </div>
