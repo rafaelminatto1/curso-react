@@ -62,7 +62,7 @@ export class FromCurso extends Component {
                     <div className="form-group row">
                         <button
                             className="btn btn-primary ml-3 mb-3"onClick={this.props.adicionar}>
-                            Adicionar
+                            {this.props.isAtualizar ? 'Atualizar': 'adicionar'}
  </button>
                     </div>
                 </form>

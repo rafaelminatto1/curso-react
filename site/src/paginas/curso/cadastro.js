@@ -7,6 +7,7 @@ const URL = 'http://localhost:3200/api/cursos'
 export class CadastroCurso extends Component {
 
     initialState = {
+        _id : null,
         codigo: '123',
         descricao: '',
         cargaHoraria: '',
@@ -45,28 +46,67 @@ export class CadastroCurso extends Component {
     adicionar(evento) {
        evento.preventDefault()
        
-       const {codigo, descricao, cargaHoraria, categoria, preco} = this.state
+       const {_id,codigo, descricao, cargaHoraria, categoria, preco} = this.state
        const body ={codigo,
         descricao,
         cargaHoraria,
         categoria,
         preco}
+        if(_id){
+            axios.put(`${URL}/${_id}`, body)
+            .then(_ =>{
+                this.limpar(evento)
+                this.listar()
+                alert('curso atualizado')
+            }
+                ).catch(error =>{
+                    alert('Ocorreu erro ao atualizar curso')
+                    console.log(error)
+                })
+        }else{
+            axios.post(URL, body).then(_ =>{
+                this.listar()
+                this.limpar()
+                alert('Curso adicionado com sucesso')
+            })
+            .catch(error =>{
+                alert('Ocorreu erro ao adicionar curso')
+                console.log(error)
+            })
+                
+        }
         
-       axios.post(URL, body).then(_ =>{
-            this.listar()
-            this.limpar()
-            alert('Curso adicionado')
-        })
-        .catch(error =>{
-            alert('Ocorreu erro ao adicionar curso')
-            console.log(error)
-        })
-            
-    }
+        }
 
+       
+
+removerCurso (curso){
+if (window.confirm('Deseja realmente deletar o curso'))
+axios.delete(`${URL}/${curso._id}`)
+.then(_ =>{
+    this.listar()
+    alert('curso deletado com sucesso')
+}).catch(error=>{
+    console.log(error)
+    alert('Ocorreu um erro!')
+})
+
+}
+consultarCurso(curso){
+this.setState({
+    _id: curso._id,
+    codigo: curso.codigo,
+    descricao: curso.descricao,
+    cargaHoraria: curso.cargaHoraria,
+    preco: curso.preco,
+    categoria: curso.categoria
+
+})
+}
     limpar(){
         this.setState(this.initialState)
     }
+  
     render() {
         return (
             <div className="row border-bottom">
@@ -82,12 +122,16 @@ export class CadastroCurso extends Component {
                         precoChange={this.precoChange.bind(this)}
                         categoria={this.state.categoria}
                         categoriaChange={this.categoriaChange.bind(this)}
-                        adicionar={this.adicionar.bind(this)} />
+                        adicionar={this.adicionar.bind(this)}
+                        isAtualizar={this.state._id ? true : false} />
 
                         
                 </div>
                 <div className="col-md-6">
-                    <ListCurso cursos={this.state.cursos} />
+                    <ListCurso cursos={this.state.cursos} 
+                    removerCurso={this.removerCurso.bind(this)}
+                    consultarCurso={this.consultarCurso.bind(this)}
+                    />
                 </div>
             </div>
         )
